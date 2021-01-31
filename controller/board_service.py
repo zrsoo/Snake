@@ -239,7 +239,7 @@ class BoardService:
             head_x, head_y = self.__snake.get_head_coordinates()
 
             # Checking if game over
-            if head_x + 1 \
+            if head_x + 1 >= self.__board.dimension \
                     or self.__board.marked_by_snake(head_x + 1, head_y):
                 raise GameOverException("Game over!")
 
