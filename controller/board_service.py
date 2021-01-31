@@ -49,6 +49,10 @@ class BoardService:
         self.__snake = Snake()
 
     def create_pretty_table(self):
+        """
+        Creates a pretty table from the board.
+        :return:
+        """
         table = PrettyTable()
         board_info = self.__board.get_board()
         table.add_rows(board_info)
@@ -97,7 +101,7 @@ class BoardService:
 
     def bend_snake_right(self, nr_steps=1):
         """
-        Moves the snake to the right one step if it is not already facing rightward.
+        Moves the snake to the right.
         :return:
         """
 
@@ -109,7 +113,7 @@ class BoardService:
             head_x, head_y = self.__snake.get_head_coordinates()
 
             # Checking if game over
-            if head_x + 1 >= self.__board.dimension or head_y + 1 >= self.__board.dimension\
+            if head_y + 1 >= self.__board.dimension\
                     or self.__board.marked_by_snake(head_x, head_y + 1):
                 raise GameOverException("Game over!")
 
@@ -139,7 +143,7 @@ class BoardService:
 
     def bend_snake_up(self, nr_steps=1):
         """
-        Moves the snake to the right one step if it is not already facing rightward.
+        Moves the snake upwards.
         :return:
         """
 
@@ -151,7 +155,7 @@ class BoardService:
             head_x, head_y = self.__snake.get_head_coordinates()
 
             # Checking if game over
-            if head_x - 1 < 0 or head_y - 1 < 0\
+            if head_x - 1 < 0\
                     or self.__board.marked_by_snake(head_x - 1, head_y):
                 raise GameOverException("Game over!")
 
@@ -166,7 +170,7 @@ class BoardService:
             for x in range(len(coordinates) - 1, 0, -1):
                 coordinates[x] = copy.deepcopy(coordinates[x - 1])
 
-            # Moving head rightward
+            # Moving head upward.
             coordinates[0][0] = coordinates[0][0] - 1
 
             # Updating snake coordinates and writing snake
@@ -180,7 +184,7 @@ class BoardService:
 
     def bend_snake_left(self, nr_steps=1):
         """
-        Moves the snake to the right one step if it is not already facing rightward.
+        Moves the snake to the left.
         :return:
         """
 
@@ -192,7 +196,7 @@ class BoardService:
             head_x, head_y = self.__snake.get_head_coordinates()
 
             # Checking if game over
-            if head_x + 1 >= self.__board.dimension or head_y - 1 < 0\
+            if head_y - 1 < 0\
                     or self.__board.marked_by_snake(head_x, head_y - 1):
                 raise GameOverException("Game over!")
 
@@ -207,7 +211,7 @@ class BoardService:
             for x in range(len(coordinates) - 1, 0, -1):
                 coordinates[x] = copy.deepcopy(coordinates[x - 1])
 
-            # Moving head rightward
+            # Moving head leftward
             # coordinates[0][0] = coordinates[0][0] + 1
             coordinates[0][1] = coordinates[0][1] - 1
 
@@ -223,7 +227,7 @@ class BoardService:
 
     def bend_snake_down(self, nr_steps=1):
         """
-        Moves the snake to the right one step if it is not already facing rightward.
+        Moves the snake to downward.
         :return:
         """
 
@@ -235,7 +239,7 @@ class BoardService:
             head_x, head_y = self.__snake.get_head_coordinates()
 
             # Checking if game over
-            if head_x + 1 >= self.__board.dimension or head_y - 1 < 0\
+            if head_x + 1 \
                     or self.__board.marked_by_snake(head_x + 1, head_y):
                 raise GameOverException("Game over!")
 
@@ -265,4 +269,8 @@ class BoardService:
             self.__snake.direction = "down"
 
     def get_snake_orientation(self):
+        """
+        Returns the snake's orientation
+        :return:
+        """
         return self.__snake.direction

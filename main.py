@@ -12,5 +12,5 @@ if __name__ == "__main__":
         console = Console(board_service)
 
         console.run_console()
-    except GameOverException as ex:
+    except GameOverException or IOError as ex:
         print(str(ex))
