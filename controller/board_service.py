@@ -109,8 +109,9 @@ class BoardService:
             head_x, head_y = self.__snake.get_head_coordinates()
 
             # Checking if game over
-            if head_x + 1 >= self.__board.dimension or head_y + 1 >= self.__board.dimension:
-                raise GameOverException
+            if head_x + 1 >= self.__board.dimension or head_y + 1 >= self.__board.dimension\
+                    or self.__board.marked_by_snake(head_x + 1, head_y + 1):
+                raise GameOverException("Game over!")
 
             # Unmark snake
             self.__board.unmark_snake(self.__snake.coordinates)
@@ -150,8 +151,9 @@ class BoardService:
             head_x, head_y = self.__snake.get_head_coordinates()
 
             # Checking if game over
-            if head_x - 1 >= self.__board.dimension or head_y - 1 < 0:
-                raise GameOverException
+            if head_x - 1 < 0 or head_y - 1 < 0\
+                    or self.__board.marked_by_snake(head_x - 1, head_y - 1):
+                raise GameOverException("Game over!")
 
             # Unmark snake
             self.__board.unmark_snake(self.__snake.coordinates)
@@ -190,8 +192,9 @@ class BoardService:
             head_x, head_y = self.__snake.get_head_coordinates()
 
             # Checking if game over
-            if head_x + 1 >= self.__board.dimension or head_y - 1 < 0:
-                raise GameOverException
+            if head_x + 1 >= self.__board.dimension or head_y - 1 < 0\
+                    or self.__board.marked_by_snake(head_x + 1, head_y - 1):
+                raise GameOverException("Game over!")
 
             # Unmark snake
             self.__board.unmark_snake(self.__snake.coordinates)
@@ -232,8 +235,9 @@ class BoardService:
             head_x, head_y = self.__snake.get_head_coordinates()
 
             # Checking if game over
-            if head_x + 1 >= self.__board.dimension or head_y - 1 < 0:
-                raise GameOverException
+            if head_x + 1 >= self.__board.dimension or head_y - 1 < 0\
+                    or self.__board.marked_by_snake(head_x + 1, head_y):
+                raise GameOverException("Game over!")
 
             # Unmark snake
             self.__board.unmark_snake(self.__snake.coordinates)

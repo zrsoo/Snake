@@ -1,13 +1,16 @@
 """
     Main module
 """
-from controller.board_service import BoardService
+from controller.board_service import BoardService, GameOverException
 from model.board import Board
 from ui.ui import Console
 
 if __name__ == "__main__":
-    board = Board()
-    board_service = BoardService(board)
-    console = Console(board_service)
+    try:
+        board = Board()
+        board_service = BoardService(board)
+        console = Console(board_service)
 
-    console.run_console()
+        console.run_console()
+    except GameOverException as ex:
+        print(str(ex))

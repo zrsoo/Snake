@@ -162,6 +162,6 @@ class Board:
         :param y:
         :return:
         """
-        if self.__board[x][y] != '+':
+        if self.__board[x][y] == '+':
             return True
         return False
