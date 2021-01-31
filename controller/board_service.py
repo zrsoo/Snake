@@ -110,7 +110,7 @@ class BoardService:
 
             # Checking if game over
             if head_x + 1 >= self.__board.dimension or head_y + 1 >= self.__board.dimension\
-                    or self.__board.marked_by_snake(head_x + 1, head_y + 1):
+                    or self.__board.marked_by_snake(head_x, head_y + 1):
                 raise GameOverException("Game over!")
 
             # Unmark snake
@@ -119,7 +119,7 @@ class BoardService:
             # Moving snake
 
             coordinates = self.__snake.coordinates
-            print(coordinates)
+
             # For each coordinate except the head, take the value of the coordinate after it = "slither"
             for x in range(len(coordinates) - 1, 0, -1):
                 coordinates[x] = copy.deepcopy(coordinates[x - 1])
@@ -130,7 +130,7 @@ class BoardService:
 
             # Updating snake coordinates and writing snake
             self.__snake.coordinates = coordinates
-            print(coordinates)
+
             nr_apples = self.__board.mark_snake(self.__snake.coordinates)
             # If the snake eats an apple, add a point
             if nr_apples == 1:
@@ -152,7 +152,7 @@ class BoardService:
 
             # Checking if game over
             if head_x - 1 < 0 or head_y - 1 < 0\
-                    or self.__board.marked_by_snake(head_x - 1, head_y - 1):
+                    or self.__board.marked_by_snake(head_x - 1, head_y):
                 raise GameOverException("Game over!")
 
             # Unmark snake
@@ -161,7 +161,7 @@ class BoardService:
             # Moving snake
 
             coordinates = self.__snake.coordinates
-            print(coordinates)
+
             # For each coordinate except the head, take the value of the coordinate after it = "slither"
             for x in range(len(coordinates) - 1, 0, -1):
                 coordinates[x] = copy.deepcopy(coordinates[x - 1])
@@ -171,7 +171,7 @@ class BoardService:
 
             # Updating snake coordinates and writing snake
             self.__snake.coordinates = coordinates
-            print(coordinates)
+
             nr_apples = self.__board.mark_snake(self.__snake.coordinates)
             # If the snake eats an apple, add a point
             if nr_apples == 1:
@@ -193,7 +193,7 @@ class BoardService:
 
             # Checking if game over
             if head_x + 1 >= self.__board.dimension or head_y - 1 < 0\
-                    or self.__board.marked_by_snake(head_x + 1, head_y - 1):
+                    or self.__board.marked_by_snake(head_x, head_y - 1):
                 raise GameOverException("Game over!")
 
             # Unmark snake
@@ -202,7 +202,7 @@ class BoardService:
             # Moving snake
 
             coordinates = self.__snake.coordinates
-            print(coordinates)
+
             # For each coordinate except the head, take the value of the coordinate after it = "slither"
             for x in range(len(coordinates) - 1, 0, -1):
                 coordinates[x] = copy.deepcopy(coordinates[x - 1])
@@ -213,7 +213,7 @@ class BoardService:
 
             # Updating snake coordinates and writing snake
             self.__snake.coordinates = coordinates
-            print(coordinates)
+
             nr_apples = self.__board.mark_snake(self.__snake.coordinates)
             # If the snake eats an apple, add a point
             if nr_apples == 1:
@@ -245,7 +245,7 @@ class BoardService:
             # Moving snake
 
             coordinates = self.__snake.coordinates
-            print(coordinates)
+
             # For each coordinate except the head, take the value of the coordinate after it = "slither"
             for x in range(len(coordinates) - 1, 0, -1):
                 coordinates[x] = copy.deepcopy(coordinates[x - 1])
@@ -256,7 +256,7 @@ class BoardService:
 
             # Updating snake coordinates and writing snake
             self.__snake.coordinates = coordinates
-            print(coordinates)
+
             nr_apples = self.__board.mark_snake(self.__snake.coordinates)
 
             # If the snake eats an apple, add a point
